@@ -30,16 +30,16 @@ console.log('main.js loaded');
 
 */
 
-const albumForm = document.getElementById('#album-form');
-const albumTitle = document.getElementById('#album-title');
-const albumDescription = document.getElementById('#album-description');
-const albumArt = document.getElementById('#album-art');
+const albumForm = document.getElementById('album-form');
+const albumTitle = document.getElementById('album-title');
+const albumDescription = document.getElementById('album-description');
+const albumArt = document.getElementById('album-art');
 
 albumForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
     const isAlbumArtDefault = albumArt.value === 'select album art';
-    const isAlbumTitleInvalid = albumTitle.value === '' || albumTitle.value.length > 5;
+    const isAlbumTitleInvalid = albumTitle.value === '' || albumTitle.value.length > 20;
     const isAlbumDescriptionInvalid = albumDescription.value === '' || albumDescription.value.length > 40; 
     const albumArtDisplay = document.getElementById('#album-art'); 
 
@@ -81,7 +81,7 @@ function createAlbumCard(title, description, albumArt) {
         </div>
     `;
 
-    const albumContainer = document.getElementById('#album-container');
+    const albumContainer = document.getElementById('album-container');
     albumContainer.appendChild(albumCard);
 }
 
