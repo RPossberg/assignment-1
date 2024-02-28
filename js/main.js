@@ -94,7 +94,7 @@ albumForm.addEventListener("submit", function (event) {
 //  Add an event listener to the album title input element for the input event
 albumTitle.addEventListener("input", function (event) {
   const titleCounter = document.getElementById("title-counter"); //  Get the title counter element by its ID
-  titleCounter.textContent = `${event.target.value.length}/5`; //  Set the title counter text content to the length of the input value
+  titleCounter.textContent = `${event.target.value.length}/25`; //  Set the title counter text content to the length of the input value
 });
 
 //  Add an event listener to the album description input element for the input event
