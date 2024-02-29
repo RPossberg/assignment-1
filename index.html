@@ -4,8 +4,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="assignment-1" />
-		<meta name="author" content="RPossberg on gitHub" />
+		<meta name="description" content="" />
+
 		<title>Album Creator</title>
 
 		<!-- Link to Bootstrap 5 -->
@@ -20,7 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="css/main.css" />
 
 		<!-- Link your JS File here via a script tag -->
-		<script src="js/main.js" defer></script>
+		<script src="js/index.js" defer></script>
 	</head>
 
 	<body class="h-100 text-white bg-light">
@@ -30,17 +30,14 @@
 					<div class="row">
 						<div class="col-sm-8 col-md-7 py-4">
 							<h4>About</h4>
-							<p class="text-body-secondary">
-								An app to save your newly created album and album art.
-							</p>
+							<p class="text-body-secondary">An app to save your newly created album and album art.</p>
 						</div>
 						<div class="col-sm-4 offset-md-1 py-4">
 							<h4>Contact</h4>
 							<ul class="list-unstyled">
 								<li>
-									<a href="https://en.wikipedia.org/wiki/English_Carrier_pigeon" class="text-white">
-										We only use Carrier Pigeon
-									</a>
+									<a href="https://en.wikipedia.org/wiki/English_Carrier_pigeon" class="text-white">We
+										only use Carrier Pigeon</a>
 								</li>
 							</ul>
 						</div>
@@ -68,13 +65,16 @@
 			</div>
 		</header>
 		<main class="pt-3 mx-auto">
-			<div class="container"> <!-- Add your content here -->
-				<form id="album-form"> <!-- Add your form tag here -->
+			<div class="container">
+				<!-- Add your content here -->
+				<form id="album-form">
+					<!-- Add your form tag here -->
 					<div class="row">
-						<div class="col-lg-3 mb-1"> <!-- Add your input fields here -->
+						<div class="col-lg-3 mb-1">
+							<!-- Add your input fields here -->
 							<input id="album-title" name="album-title" type="text" class="form-control"
 								placeholder="Album Title" />
-							<div class="invalid-feedback">Invalid Album Name</div>
+							<div id="album-hint" class="invalid-feedback">Invalid Album Name</div>
 							<!-- Add your invalid feedback here -->
 						</div>
 						<div class="col-lg-6 mb-1">
