@@ -1,4 +1,4 @@
-console.log('main.js loaded')
+console.log("main.js loaded");
 
 //  Declare constiables for the form and form elements
 /*
@@ -25,40 +25,63 @@ console.log('main.js loaded')
     */
 
 // Declare variables for the form and form elements
-const albumForm = document.getElementById('album-form') // Get the form element by its ID
-const albumTitle = document.getElementById('album-title')
-const albumDescription = document.getElementById('album-description')
-const albumArt = document.getElementById('album-art') // Assuming you have an element with id 'album-art'
+const albumForm = document.getElementById("album-form"); // Get the form element by its ID
+const albumTitle = document.getElementById("album-title");
+const albumDescription = document.getElementById("album-description");
+const albumArt = document.getElementById("album-art");
 
-// albumArt.addEventListener('change', function () {
-// 	const albumArt = document.getElementById('album-art') // Get the album art select element by its ID
-// 	const selectedArt = albumArt.value // Get the selected album art value
-// 	const albumArtDisplay = document.getElementById('album-art-display')
-// 	console.log(albumArtDisplay) // Get the album art display element by its ID
-// 	albumArtDisplay.src = `img/${selectedArt}.jpg` // Set the album art display source to the selected album art
-// })
+// *Add an event listener to the form for the submit event
+albumForm.addEventListener("submit", function (event) {
+  // title check two checks
 
-// Add an event listener to the form for the submit event
-albumForm.addEventListener('submit', function (event) {
-	event.preventDefault()
-	// title check two checks
-	// fn(input, max) to many chars
-	validateLength(albumTitle, 15, '#album-hint')
-	validateLength(albumDescription, 20, '#album-hint')
+  // fn(input, max) to many chars
+  validateLength(albumTitle, 20, "#album-hint");
+  console.log(albumTitle.value.length);
+  validateLength(albumDescription, 40, "#album-hint");
 
-	createAlbumCard(albumTitle.value, albumDescription.value, albumArt.value)
-})
+  if (albumTitle.value.length > 20) {
+    albumTitle.classList.add("is-invalid");
+    console.log("title is invalid");
+  } else {
+    albumTitle.classList.remove("is-invalid");
+  }
+
+  if (albumDescription.value.length > 40) {
+    albumDescription.classList.add("is-invalid");
+  } else {
+    albumDescription.classList.remove("is-invalid");
+  }
+
+  if (albumArt.value === "") {
+    albumArt.classList.add("is-invalid");
+  } else {
+    albumArt.classList.remove("is-invalid");
+  }
+
+  event.preventDefault();
+
+  if (
+    !albumTitle.classList.contains("is-invalid") &&
+    !albumDescription.classList.contains("is-invalid") &&
+    !albumArt.classList.contains("is-invalid")
+  ) {
+    createAlbumCard(albumTitle.value, albumDescription.value, albumArt.value);
+    console.log(albumTitle.value, albumDescription.value, albumArt.value);
+  }
+});
 
 function validateLength(input, max, hint) {
-	if (input.value.length !== max) {
-		document.querySelector(hint).classList.remove('is-inavlid')
-	}
+  if (input.value.length > max) {
+    document.querySelector(hint).classList.add("is-invalid");
+  } else {
+    document.querySelector(hint).classList.remove("is-invalid");
+  }
 }
 
 function createAlbumCard(title, description, albumArt) {
-	const albumCard = document.createElement('div') //  Create a new div element
-	albumCard.classList.add('album-card') //  Add the album-card class to the new div element
-	albumCard.innerHTML = `
+  const albumCard = document.createElement("div"); //  Create a new div element
+  albumCard.classList.add("album-card"); //  Add the album-card class to the new div element
+  albumCard.innerHTML = `
         <div class="col">
             <div class="card shadow-sm">
                 <img class="bd-placeholder-img card-img-top" src="img/${albumArt}" alt="${title}" />
@@ -68,10 +91,10 @@ function createAlbumCard(title, description, albumArt) {
                 </div>
             </div>
         </div>
-    `
+    `;
 
-	//  Append the album card to the album container
-	const albumContainer = document.getElementById('all-albums-list')
+  //  Append the album card to the album container
+  const albumContainer = document.getElementById("all-albums-list");
 
-	albumContainer.appendChild(albumCard)
+  albumContainer.appendChild(albumCard);
 }
