@@ -35,18 +35,18 @@ albumForm.addEventListener("submit", function (event) {
   // title check two checks
 
   // fn(input, max) to many chars
-  validateLength(albumTitle, 20, "#album-hint");
+  validateLength(albumTitle, 15, "#album-hint");
   console.log(albumTitle.value.length);
-  validateLength(albumDescription, 40, "#album-hint");
+  validateLength(albumDescription, 30, "#album-hint");
 
-  if (albumTitle.value.length > 20) {
+  if (albumTitle.value.length > 15 || albumTitle.value.length < 1) {
     albumTitle.classList.add("is-invalid");
     console.log("title is invalid");
   } else {
     albumTitle.classList.remove("is-invalid");
   }
 
-  if (albumDescription.value.length > 40) {
+  if (albumDescription.value.length > 30 || albumDescription.value.length < 1) {
     albumDescription.classList.add("is-invalid");
   } else {
     albumDescription.classList.remove("is-invalid");
